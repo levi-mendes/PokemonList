@@ -1,4 +1,4 @@
-package com.example.pokemonappagilecontent
+package com.example.pokemonappagilecontent.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
