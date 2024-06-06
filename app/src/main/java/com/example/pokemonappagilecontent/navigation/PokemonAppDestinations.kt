@@ -2,6 +2,7 @@ package com.example.pokemonappagilecontent.navigation
 
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import com.example.core.PokemonItemEntity
 
 object PokemonAppDestinations {
     const val LIST = "list"
@@ -24,7 +25,7 @@ class PokemonAppNavigationActions(navController: NavHostController) {
             restoreState = true
         }
     }
-    val navigateToDetails: () -> Unit = {
+    val navigateToDetails: (PokemonItemEntity) -> Unit = {
         navController.navigate(PokemonAppDestinations.DETAILS) {
             popUpTo(navController.graph.findStartDestination().id) {
                 saveState = true

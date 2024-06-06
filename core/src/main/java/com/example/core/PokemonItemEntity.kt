@@ -1,5 +1,5 @@
 package com.example.core
 
-class PokemonEntity {
+class PokemonItemEntity {
     lateinit var name: String
 }

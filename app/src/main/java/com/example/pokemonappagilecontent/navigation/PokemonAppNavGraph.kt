@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.pokemonappagilecontent.ListPokemons
+import com.example.pokemonappagilecontent.PokemonDetail
 
 @Composable
 fun PokemonAppNavGraph(
@@ -17,10 +18,12 @@ fun PokemonAppNavGraph(
         startDestination = startDestination
     ) {
         composable(PokemonAppDestinations.LIST) {
-            ListPokemons()
+            ListPokemons(onItemClick = { name ->
+                navController.navigate("${PokemonAppDestinations.DETAILS}/$name")
+            })
         }
-        composable(PokemonAppDestinations.DETAILS) {
-//            DetailsScreen()
+        composable("${PokemonAppDestinations.DETAILS}/{name}") {
+            PokemonDetail()
         }
     }
 }

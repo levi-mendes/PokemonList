@@ -1,5 +1,6 @@
 package com.example.pokemonappagilecontent
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -14,16 +15,21 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun ListPokemons(
     viewModel: ListPokemonsViewModel = koinViewModel(),
+    onItemClick: (String) -> Unit
 ) {
     val state by viewModel.uiState.collectAsState()
 
-    ListPokemons(state = state)
+    ListPokemons(
+        state = state,
+        onNavigateToDetails = onItemClick
+    )
 }
 
 @Composable
 fun ListPokemons(
     modifier: Modifier = Modifier,
     state: ListAllPokemonsUiState = ListAllPokemonsUiState(),
+    onNavigateToDetails: (String) -> Unit = {}
 ) {
 
     if (state.loading) {
@@ -38,7 +44,13 @@ fun ListPokemons(
                 items(
                     items = pokemons,
                     itemContent = { pokemon ->
-                        ItemPokemonList(pokemon = pokemon)
+                        ItemPokemonList(
+                            modifier = Modifier.clickable {
+                                onNavigateToDetails(pokemon.name)
+                            },
+                            onItemClicked = onNavigateToDetails,
+                            pokemon = pokemon
+                        )
                     }
                 )
             }
