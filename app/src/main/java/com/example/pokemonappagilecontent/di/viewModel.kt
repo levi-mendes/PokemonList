@@ -1,14 +1,12 @@
 package com.example.pokemonappagilecontent.di
 
 import com.example.pokemonappagilecontent.list.ListPokemonsViewModel
-import org.koin.androidx.viewmodel.dsl.viewModel
+import com.example.pokemonappagilecontent.detail.PokemonDetailViewModel
+import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.dsl.module
 
 val viewModel = module {
 
-    viewModel {
-        ListPokemonsViewModel(
-            listAll = get()
-        )
-    }
+    viewModelOf(::ListPokemonsViewModel)
+    viewModelOf(::PokemonDetailViewModel)
 }
