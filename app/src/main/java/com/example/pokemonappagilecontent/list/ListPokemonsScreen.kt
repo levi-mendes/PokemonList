@@ -1,4 +1,4 @@
-package com.example.pokemonappagilecontent
+package com.example.pokemonappagilecontent.list
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -10,6 +10,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.pokemonappagilecontent.components.LoadingDialog
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -28,7 +29,7 @@ fun ListPokemons(
 @Composable
 fun ListPokemons(
     modifier: Modifier = Modifier,
-    state: ListAllPokemonsUiState = ListAllPokemonsUiState(),
+    state: ListPokemonsUiState = ListPokemonsUiState(),
     onNavigateToDetails: (String) -> Unit = {}
 ) {
 

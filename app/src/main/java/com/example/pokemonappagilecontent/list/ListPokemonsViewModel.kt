@@ -1,4 +1,4 @@
-package com.example.pokemonappagilecontent
+package com.example.pokemonappagilecontent.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,8 +13,8 @@ class ListPokemonsViewModel(
     private val listAll: ListPokemonUseCase
 ): ViewModel() {
 
-    private val _uiState = MutableStateFlow(ListAllPokemonsUiState(loading = true))
-    val uiState: StateFlow<ListAllPokemonsUiState> = _uiState.asStateFlow()
+    private val _uiState = MutableStateFlow(ListPokemonsUiState(loading = true))
+    val uiState: StateFlow<ListPokemonsUiState> = _uiState.asStateFlow()
 
     init {
         loadPokemonPage()

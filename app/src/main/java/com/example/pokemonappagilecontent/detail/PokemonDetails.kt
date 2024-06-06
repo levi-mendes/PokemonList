@@ -1,4 +1,4 @@
-package com.example.pokemonappagilecontent
+package com.example.pokemonappagilecontent.detail
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable

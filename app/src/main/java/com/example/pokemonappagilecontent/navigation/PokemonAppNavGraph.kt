@@ -5,8 +5,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.pokemonappagilecontent.ListPokemons
-import com.example.pokemonappagilecontent.PokemonDetail
+import com.example.pokemonappagilecontent.list.ListPokemons
+import com.example.pokemonappagilecontent.detail.PokemonDetail
 
 @Composable
 fun PokemonAppNavGraph(

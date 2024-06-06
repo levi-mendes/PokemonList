@@ -1,4 +1,4 @@
-package com.example.pokemonappagilecontent
+package com.example.pokemonappagilecontent.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -16,6 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
+import com.example.pokemonappagilecontent.R
 
 @Composable
 fun LoadingDialog(
