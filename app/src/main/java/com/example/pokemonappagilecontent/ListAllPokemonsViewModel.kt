@@ -17,14 +17,21 @@ class ListAllPokemonsViewModel(
     val uiState: StateFlow<ListAllPokemonsUiState> = _uiState.asStateFlow()
 
     init {
+        loadPokemonPage()
+    }
+
+    fun loadPokemonPage() {
         viewModelScope.launch {
+            val page = _uiState.value.currentPokemonPage
 
             runCatching {
-                listAll.listAll()
+                listAll.listPokemonPage(page, 150)
 
             }.onSuccess { allPokemons ->
+                val updatedIndex = page + allPokemons.lastIndex
+
                 _uiState.update {
-                    it.copy(loading = false, pokemons = allPokemons)
+                    it.copy(loading = false, pokemons = allPokemons, currentPokemonPage = updatedIndex)
                 }
 
             }.onFailure {error ->

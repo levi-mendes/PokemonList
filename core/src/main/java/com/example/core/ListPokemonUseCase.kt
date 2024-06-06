@@ -2,7 +2,7 @@ package com.example.core
 
 class ListPokemonUseCase(val dataSource: PokemonDataSource) {
 
-   suspend fun listAll(): List<PokemonEntity> {
-        return dataSource.listAll()
+   suspend fun listPokemonPage(startIndex: Int, itensCount: Int): List<PokemonEntity> {
+        return dataSource.getPokemonPageList(startIndex, itensCount)
    }
 }
