@@ -1,16 +1,14 @@
 package com.example.data.api
 
+import com.example.data.api.com.example.data.api.PokemonResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface PokemonAppService {
 
     @GET("/v2/pokemon/")
-    suspend fun listAll(): AllPokemonsDTO
-
-    @GET("/v2/pokemon/{id}")
-    suspend fun findByName(@Path("id") id: Int)
+    suspend fun listAll(): AllPokemonsResponse
 
     @GET("/v2/pokemon/{name}")
-    suspend fun findById(@Path("name") name: String)
+    suspend fun findByName(@Path("name") name: String): PokemonResponse
 }
