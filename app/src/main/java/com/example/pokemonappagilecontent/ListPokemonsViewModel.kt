@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class ListAllPokemonsViewModel(
+class ListPokemonsViewModel(
     private val listAll: ListPokemonUseCase
 ): ViewModel() {
 
