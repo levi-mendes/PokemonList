@@ -32,7 +32,6 @@ class ListAllPokemonsViewModel(
                     it.copy(loading = false, error = error)
                 }
             }
-
         }
     }
 }

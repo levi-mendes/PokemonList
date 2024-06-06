@@ -2,7 +2,7 @@ package com.example.core
 
 interface PokemonDataSource {
 
-    fun listAll(): AllPokemonEntity
+    suspend fun listAll(): List<PokemonEntity>
 
-    fun getByName(name: String)
+    suspend fun getByName(name: String): PokemonEntity
 }

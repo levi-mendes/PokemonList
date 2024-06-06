@@ -2,6 +2,7 @@ package com.example.pokemonappagilecontent
 
 import android.app.Application
 import com.example.pokemonappagilecontent.di.dataSource
+import com.example.pokemonappagilecontent.di.network
 import com.example.pokemonappagilecontent.di.useCases
 import com.example.pokemonappagilecontent.di.viewModel
 import org.koin.android.ext.koin.androidContext
@@ -16,7 +17,8 @@ class PokemonAppAgileContentApplication: Application() {
             modules(arrayListOf(
                 viewModel,
                 useCases,
-                dataSource
+                dataSource,
+                network
             ))
             androidContext(this@PokemonAppAgileContentApplication)
         }

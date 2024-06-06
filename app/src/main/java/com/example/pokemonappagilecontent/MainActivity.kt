@@ -11,12 +11,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.pokemonappagilecontent.ui.theme.PokemonAppAgileContentTheme
+import org.koin.androidx.compose.koinViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // viewModel: InsertMusicComposeViewModel = koinViewModel(),
+
         setContent {
+            val viewModel: ListAllPokemonsViewModel = koinViewModel()
+
             PokemonAppAgileContentTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
