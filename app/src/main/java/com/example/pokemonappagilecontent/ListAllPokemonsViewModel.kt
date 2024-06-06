@@ -22,16 +22,16 @@ class ListAllPokemonsViewModel(
 
     fun loadPokemonPage() {
         viewModelScope.launch {
-            val page = _uiState.value.currentPokemonPage
+            val initialIndex = _uiState.value.currentItensCount
 
             runCatching {
-                listAll.listPokemonPage(page, 150)
+                listAll.listPokemonPage(initialIndex, 150)
 
             }.onSuccess { allPokemons ->
-                val updatedIndex = page + allPokemons.lastIndex
+                val updatedIndex = initialIndex + allPokemons.lastIndex
 
                 _uiState.update {
-                    it.copy(loading = false, pokemons = allPokemons, currentPokemonPage = updatedIndex)
+                    it.copy(loading = false, pokemons = allPokemons, currentItensCount = updatedIndex)
                 }
 
             }.onFailure {error ->
