@@ -1,5 +1,6 @@
 package com.example.pokemonappagilecontent.list
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.core.ListPokemonPageUseCase
@@ -23,18 +24,30 @@ class ListPokemonsViewModel(
     }
 
     fun loadNextPokemonPage() {
+        _uiState.update {
+            it.copy(loading = true)
+        }
+
         viewModelScope.launch {
-            val initialIndex = _uiState.value.currentItensCount
+            val initialIndex = if (_uiState.value.currentItensCount > 0) _uiState.value.currentItensCount + 1 else 0
 
             runCatching {
                 getPokemonPage.listPokemonPage(initialIndex, 20)
 
-            }.onSuccess { allPokemons ->
-                val updatedIndex = initialIndex + allPokemons.lastIndex
-                uiState.value.pokemons?.addAll(allPokemons)
+            }.onSuccess { pokemons ->
+                val updatedIndex = initialIndex + pokemons.lastIndex
+                val updatedList = uiState.value.pokemons
+                updatedList?.addAll(pokemons)
+                updatedList?.sortBy { it.name }
+                Log.e("pokemons", updatedList.toString())
 
                 _uiState.update {
-                    it.copy(loading = false, pokemons = uiState.value.pokemons, currentItensCount = updatedIndex)
+                    it.copy(
+                        loading = false,
+                        isNewResultSearch = true,
+                        pokemons = updatedList,
+                        currentItensCount = updatedIndex
+                    )
                 }
 
             }.onFailure {error ->

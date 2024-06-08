@@ -28,7 +28,7 @@ fun ItemPokemonList(
     ) {
         Text(
             text = pokemon.name,
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 24.dp)
         )
         Divider()
     }
