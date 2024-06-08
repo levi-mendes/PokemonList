@@ -1,6 +1,6 @@
 package com.example.data.api
 
-import com.example.data.api.com.example.data.api.PokemonResponse
+import com.example.data.api.com.example.data.api.mapper.PokemonDetailResponse
 import retrofit2.Retrofit
 
 class PokemonAPI(retrofit: Retrofit) {
@@ -11,7 +11,7 @@ class PokemonAPI(retrofit: Retrofit) {
         return service.getPokemonList(startIndex, limit)
     }
 
-    suspend fun findByName(name: String): PokemonResponse {
+    suspend fun findByName(name: String): PokemonDetailResponse {
         return service.findByName(name)
     }
 }

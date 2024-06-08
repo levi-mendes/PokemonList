@@ -22,8 +22,10 @@ fun PokemonAppNavGraph(
                 navController.navigate("${PokemonAppDestinations.DETAILS}/$name")
             })
         }
-        composable("${PokemonAppDestinations.DETAILS}/{name}") {
-            PokemonDetail()
+        composable("${PokemonAppDestinations.DETAILS}/{name}") { entry ->
+            entry.arguments?.getString("name")?.let {
+                PokemonDetail(name = it)
+            } ?: navController.popBackStack()
         }
     }
 }

@@ -77,4 +77,6 @@ dependencies {
     implementation("io.insert-koin:koin-androidx-navigation")
     testImplementation("io.insert-koin:koin-test-junit4")
     testImplementation("io.insert-koin:koin-android-test")
+    //coil
+    implementation("io.coil-kt:coil-compose:2.4.0")
 }
