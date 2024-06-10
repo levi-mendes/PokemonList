@@ -6,16 +6,14 @@ import com.example.data.api.response.PokemonDetailResponse
 import com.example.data.api.response.PokemonItemListResponse
 
 fun PokemonItemListResponse.toPokemonEntity(): PokemonItemEntity {
-    val pokemonItemEntity = PokemonItemEntity()
-    pokemonItemEntity.name = name
-
-    return pokemonItemEntity
+    return PokemonItemEntity().apply {
+        name = this@toPokemonEntity.name
+    }
 }
 
 fun PokemonDetailResponse.toPokemonDetail(): PokemonDetailEntity {
-    val pokemonDetail = PokemonDetailEntity()
-    pokemonDetail.name = name
-    pokemonDetail.imageUrl = sprites.url
-
-    return pokemonDetail
+    return PokemonDetailEntity().apply {
+        name = this@toPokemonDetail.name
+        imageUrl = this@toPokemonDetail.sprites.url
+    }
 }
