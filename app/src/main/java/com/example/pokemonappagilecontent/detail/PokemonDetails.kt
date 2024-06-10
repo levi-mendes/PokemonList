@@ -14,9 +14,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import coil.request.CachePolicy
+import coil.request.ErrorResult
+import coil.request.ImageRequest
+import coil.request.SuccessResult
 import com.example.core.detail.PokemonDetailEntity
 import com.example.pokemonappagilecontent.ui.theme.PokemonAppAgileContentTheme
 import org.koin.androidx.compose.koinViewModel
@@ -50,9 +55,36 @@ fun PokemonDetail(
             )
         }
 
+        // Build an ImageRequest with Coil
+        val listener = object : ImageRequest.Listener {
+            override fun onError(request: ImageRequest, result: ErrorResult) {
+                super.onError(request, result)
+            }
+
+            override fun onSuccess(request: ImageRequest, result: SuccessResult) {
+                super.onSuccess(request, result)
+            }
+        }
+
         state.pokemonDetail?.let { pokemonDetail ->
+            val imageUrl = pokemonDetail.imageUrl
+
+            val imageRequest = ImageRequest.Builder(LocalContext.current)
+                .data(imageUrl)
+                .listener(listener)
+//                .dispatcher(Dispatcher.IO)
+                .memoryCacheKey(imageUrl)
+                .diskCacheKey(imageUrl)
+//                .placeholder(placeholder)
+//                .error(placeholder)
+//                .fallback(placeholder)
+                .diskCachePolicy(CachePolicy.ENABLED)
+                .memoryCachePolicy(CachePolicy.ENABLED)
+                .build()
+
+
             AsyncImage(
-                model = pokemonDetail.imageUrl,
+                model = imageRequest,
                 contentDescription = null,
                 Modifier
                     .width(200.dp)

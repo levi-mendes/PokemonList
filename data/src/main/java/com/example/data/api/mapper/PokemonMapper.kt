@@ -3,6 +3,7 @@ package com.example.data.api.mapper
 import com.example.core.detail.PokemonDetailEntity
 import com.example.core.list.PokemonItemEntity
 import com.example.data.api.database.entity.PokemonDB
+import com.example.data.api.database.entity.PokemonDetailsDB
 import com.example.data.api.response.PokemonDetailResponse
 import com.example.data.api.response.PokemonItemListResponse
 
@@ -16,6 +17,17 @@ fun PokemonDetailResponse.toPokemonDetail(): PokemonDetailEntity {
     return PokemonDetailEntity().apply {
         name = this@toPokemonDetail.name
         imageUrl = this@toPokemonDetail.sprites.url
+    }
+}
+
+fun PokemonDetailEntity.toPokemonDetailDB(): PokemonDetailsDB {
+    return PokemonDetailsDB(name = name, url = imageUrl)
+}
+
+fun PokemonDetailsDB.toPokemonDetailDB(): PokemonDetailEntity {
+    return PokemonDetailEntity().apply {
+        name = this@toPokemonDetailDB.name
+        imageUrl = this@toPokemonDetailDB.url
     }
 }
 

@@ -9,4 +9,5 @@ var dataBase = module {
 
     single { PokemonDatabase.getInstance(context = androidContext()) }
     singleOf(PokemonDatabase::pokemonDao)
+    singleOf(PokemonDatabase::pokemonDetailsDao)
 }
