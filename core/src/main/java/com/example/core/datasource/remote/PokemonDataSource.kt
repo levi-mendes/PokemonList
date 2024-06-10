@@ -1,4 +1,4 @@
-package com.example.core.datasource
+package com.example.core.datasource.remote
 
 import com.example.core.detail.PokemonDetailEntity
 import com.example.core.list.PokemonItemEntity

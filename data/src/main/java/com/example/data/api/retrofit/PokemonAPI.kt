@@ -8,7 +8,7 @@ class PokemonAPI(retrofit: Retrofit) {
 
     private val service by lazy { retrofit.create(PokemonAppService::class.java) }
 
-    suspend fun listAll(startIndex: Int, limit: Int): ListPokemonsPageResponse {
+    suspend fun listPage(startIndex: Int, limit: Int): ListPokemonsPageResponse {
         return service.getPokemonList(startIndex, limit)
     }
 

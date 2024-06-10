@@ -3,7 +3,9 @@ package com.example.pokemonappagilecontent.list
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.core.list.ListPokemonPageLocalUseCase
 import com.example.core.list.ListPokemonPageUseCase
+import com.example.core.list.SavePokemonPageLocalUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -11,7 +13,9 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class ListPokemonsViewModel(
-    private val getPokemonPage: ListPokemonPageUseCase
+    private val getPokemonPage: ListPokemonPageUseCase,
+    private val getPokemonPageLocal: ListPokemonPageLocalUseCase,
+    private val savePokemonPageLocal: SavePokemonPageLocalUseCase,
 ): ViewModel() {
 
     private val _uiState = MutableStateFlow(ListPokemonsUiState(loading = true))
@@ -32,7 +36,15 @@ class ListPokemonsViewModel(
             val initialIndex = if (_uiState.value.currentItensCount > 0) _uiState.value.currentItensCount + 1 else 0
 
             runCatching {
-                getPokemonPage.listPokemonPage(initialIndex, 20)
+                var pokemons = getPokemonPageLocal.listPokemonPage(nextPage)
+
+                if (pokemons.isEmpty()) {
+                    pokemons = getPokemonPage.listPokemonPage(initialIndex, 150)
+                    savePokemonPageLocal.savePage(nextPage, pokemons)
+                }
+
+                nextPage++
+                pokemons
 
             }.onSuccess { pokemons ->
                 val updatedIndex = initialIndex + pokemons.lastIndex
