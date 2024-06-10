@@ -22,14 +22,12 @@ fun PokemonDetailResponse.toPokemonDetail(): PokemonDetailEntity {
 fun PokemonDB.toPokemonItemEntity(): PokemonItemEntity {
     return PokemonItemEntity().apply {
         name = this@toPokemonItemEntity.name
-        //imageUrl = this@toPokemonItemEntity.sprites.url
     }
 }
 
 fun PokemonDB.toPokemonDetailEntity(): PokemonDetailEntity {
     return PokemonDetailEntity().apply {
         name = this@toPokemonDetailEntity.name
-        //imageUrl = this@toPokemonItemEntity.sprites.url
     }
 }
 
