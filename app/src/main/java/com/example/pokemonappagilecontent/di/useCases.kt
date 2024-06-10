@@ -1,7 +1,7 @@
 package com.example.pokemonappagilecontent.di
 
-import com.example.core.ListPokemonPageUseCase
-import com.example.core.GetPokemonDetailUseCase
+import com.example.core.list.ListPokemonPageUseCase
+import com.example.core.detail.GetPokemonDetailUseCase
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 

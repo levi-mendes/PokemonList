@@ -1,7 +1,7 @@
 package com.example.pokemonappagilecontent.di
 
-import com.example.data.api.PokemonAPI
-import com.example.data.api.RetrofitInitializer
+import com.example.data.api.retrofit.PokemonAPI
+import com.example.data.api.retrofit.RetrofitInitializer
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 

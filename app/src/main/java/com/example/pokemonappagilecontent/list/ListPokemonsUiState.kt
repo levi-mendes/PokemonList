@@ -1,6 +1,6 @@
 package com.example.pokemonappagilecontent.list
 
-import com.example.core.PokemonItemEntity
+import com.example.core.list.PokemonItemEntity
 
 data class ListPokemonsUiState(
     val loading: Boolean = false,

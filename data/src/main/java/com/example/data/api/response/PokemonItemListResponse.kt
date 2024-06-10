@@ -1,3 +1,3 @@
-package com.example.data.api.com.example.data.api
+package com.example.data.api.response
 
 data class PokemonItemListResponse(val name: String)

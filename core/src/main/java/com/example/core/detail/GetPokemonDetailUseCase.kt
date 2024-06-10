@@ -1,4 +1,6 @@
-package com.example.core
+package com.example.core.detail
+
+import com.example.core.datasource.PokemonDataSource
 
 class GetPokemonDetailUseCase(private val dataSource: PokemonDataSource) {
 

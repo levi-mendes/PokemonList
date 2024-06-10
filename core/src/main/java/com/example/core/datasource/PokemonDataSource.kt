@@ -1,4 +1,7 @@
-package com.example.core
+package com.example.core.datasource
+
+import com.example.core.detail.PokemonDetailEntity
+import com.example.core.list.PokemonItemEntity
 
 interface PokemonDataSource {
 

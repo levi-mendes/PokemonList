@@ -1,6 +1,6 @@
 package com.example.pokemonappagilecontent.detail
 
-import com.example.core.PokemonDetailEntity
+import com.example.core.detail.PokemonDetailEntity
 
 data class PokemonDetailUiState(
     val loading: Boolean = false,

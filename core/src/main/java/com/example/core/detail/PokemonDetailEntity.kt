@@ -1,4 +1,4 @@
-package com.example.core
+package com.example.core.detail
 
 class PokemonDetailEntity {
     lateinit var name: String

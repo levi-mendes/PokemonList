@@ -2,7 +2,7 @@ package com.example.pokemonappagilecontent.navigation
 
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import com.example.core.PokemonItemEntity
+import com.example.core.list.PokemonItemEntity
 
 object PokemonAppDestinations {
     const val LIST = "list"

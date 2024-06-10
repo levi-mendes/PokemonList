@@ -1,11 +1,11 @@
-package com.example.data.api.com.example.data.api
+package com.example.data.api.datasource
 
-import com.example.core.PokemonDataSource
-import com.example.core.PokemonDetailEntity
-import com.example.core.PokemonItemEntity
-import com.example.data.api.PokemonAPI
-import com.example.data.api.com.example.data.api.mapper.toPokemonDetail
-import com.example.data.api.com.example.data.api.mapper.toPokemonEntity
+import com.example.core.datasource.PokemonDataSource
+import com.example.core.detail.PokemonDetailEntity
+import com.example.core.list.PokemonItemEntity
+import com.example.data.api.retrofit.PokemonAPI
+import com.example.data.api.mapper.toPokemonDetail
+import com.example.data.api.mapper.toPokemonEntity
 
 class PokemonDataSourceImpl(val api: PokemonAPI): PokemonDataSource {
 
