@@ -17,16 +17,17 @@ class ListPokemonsViewModelTest {
     private val getPokemonPage: ListPokemonPageUseCase = mockk()
     private val getPokemonPageLocal: ListPokemonPageLocalUseCase = mockk()
     private val savePokemonPageLocal: SavePokemonPageLocalUseCase = mockk()
+    private lateinit var viewModel: ListPokemonsViewModel
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Before
     fun setup() {
-        Dispatchers.setMain(Dispatchers.Unconfined)
+        Dispatchers.setMain(Dispatchers.IO)
+        viewModel = ListPokemonsViewModel(getPokemonPage, getPokemonPageLocal, savePokemonPageLocal)
     }
 
     @Test
     fun nextPageCounterShouldBeZeroInInitiaization() {
-        val viewModel = ListPokemonsViewModel(getPokemonPage, getPokemonPageLocal, savePokemonPageLocal)
         assertEquals(0, viewModel.nextPage)
     }
 }

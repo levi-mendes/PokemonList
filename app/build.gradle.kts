@@ -81,6 +81,8 @@ dependencies {
     implementation("io.coil-kt:coil-compose:2.4.0")
 
     // Mockk
-    testImplementation("io.mockk:mockk:1.12.1")
+    testImplementation("io.mockk:mockk:1.12.4")
+//    androidTestImplementation("io.mockk:mockk-agent:1.12.1")
+    androidTestImplementation("io.mockk:mockk-android:1.12.4")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0-RC")
 }
