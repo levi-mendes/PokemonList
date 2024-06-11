@@ -24,7 +24,6 @@ class PokemonDetailViewModel(
         viewModelScope.launch {
 
             runCatching {
-
                 var pokemonDetail = getPokemonDetailLocalUseCase.getByName(name)
 
                 if (pokemonDetail == null) {
@@ -35,7 +34,6 @@ class PokemonDetailViewModel(
                 pokemonDetail
 
             }.onSuccess { pokemonDetail ->
-
                 _uiState.update {
                     it.copy(loading = false, pokemonDetail = pokemonDetail)
                 }

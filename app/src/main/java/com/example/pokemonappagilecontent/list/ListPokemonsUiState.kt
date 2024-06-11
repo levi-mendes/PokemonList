@@ -8,4 +8,8 @@ data class ListPokemonsUiState(
     val pokemons: MutableList<PokemonItemEntity>? =  mutableListOf(),
     val error: Throwable? = null,
     val isNewResultSearch: Boolean = false
-)
+) {
+    fun searchHasFinished(): Boolean {
+        return !loading && isNewResultSearch
+    }
+}

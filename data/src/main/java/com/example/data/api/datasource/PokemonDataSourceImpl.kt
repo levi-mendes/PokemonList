@@ -9,8 +9,8 @@ import com.example.data.api.mapper.toPokemonEntity
 
 class PokemonDataSourceImpl(val api: PokemonAPI): PokemonDataSource {
 
-    override suspend fun getPokemonPageList(startIndex: Int, itensCount: Int): List<PokemonItemEntity> {
-        return api.listPage(startIndex, itensCount).results.map { it.toPokemonEntity() }
+    override suspend fun getPokemonPageList(startIndex: Int): List<PokemonItemEntity> {
+        return api.listPage(startIndex).results.map { it.toPokemonEntity() }
     }
 
     override suspend fun getByName(name: String): PokemonDetailEntity {

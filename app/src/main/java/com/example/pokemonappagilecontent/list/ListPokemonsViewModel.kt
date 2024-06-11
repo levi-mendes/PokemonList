@@ -1,6 +1,5 @@
 package com.example.pokemonappagilecontent.list
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.core.list.ListPokemonPageLocalUseCase
@@ -39,7 +38,7 @@ class ListPokemonsViewModel(
                 var pokemons = getPokemonPageLocal.listPokemonPage(nextPage)
 
                 if (pokemons.isEmpty()) {
-                    pokemons = getPokemonPage.listPokemonPage(initialIndex, 150)
+                    pokemons = getPokemonPage.listPokemonPage(initialIndex)
                     savePokemonPageLocal.savePage(nextPage, pokemons)
                 }
 
@@ -51,7 +50,6 @@ class ListPokemonsViewModel(
                 val updatedList = uiState.value.pokemons
                 updatedList?.addAll(pokemons)
                 updatedList?.sortBy { it.name }
-                Log.e("pokemons", updatedList.toString())
 
                 _uiState.update {
                     it.copy(
