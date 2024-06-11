@@ -56,6 +56,7 @@ class ListPokemonsViewModel(
                         loading = false,
                         isNewResultSearch = true,
                         pokemons = updatedList,
+                        error = null,
                         currentItensCount = updatedIndex
                     )
                 }

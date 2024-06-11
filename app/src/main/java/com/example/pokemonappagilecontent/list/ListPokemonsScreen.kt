@@ -45,17 +45,15 @@ fun ListPokemons(
         LoadingDialog {}
     }
 
-    state.error?.let {
-        state.error.message?.let { errorMessage ->
-            Text(
-                text = errorMessage,
-                color = Color.Red,
-                textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.titleLarge,
-                modifier = Modifier
-                    .padding(16.dp)
-            )
-        }
+    state.error?.message?.let { errorMessage ->
+        Text(
+            text = errorMessage,
+            color = Color.Red,
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.titleLarge,
+            modifier = Modifier
+                .padding(16.dp)
+        )
     }
 
     Column {
