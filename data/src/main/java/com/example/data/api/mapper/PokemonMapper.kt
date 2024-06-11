@@ -15,7 +15,10 @@ fun PokemonItemListResponse.toPokemonEntity(): PokemonItemEntity {
 
 fun PokemonDetailResponse.toPokemonDetail(): PokemonDetailEntity {
     return PokemonDetailEntity().apply {
+        id = this@toPokemonDetail.id
         name = this@toPokemonDetail.name
+        weight = this@toPokemonDetail.weight
+        height = this@toPokemonDetail.height
         imageUrl = this@toPokemonDetail.sprites.url
     }
 }

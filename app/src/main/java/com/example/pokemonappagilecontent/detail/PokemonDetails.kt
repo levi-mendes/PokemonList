@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -48,7 +49,9 @@ fun PokemonDetail(
     state: PokemonDetailUiState = PokemonDetailUiState(),
 ) {
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .padding(horizontal = 16.dp)
+            .fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -94,9 +97,28 @@ fun PokemonDetail(
                 contentScale = ContentScale.Crop
             )
 
-            Row {
-                Text(text = "Name: ")
-                Text(text = pokemonDetail.name)
+            val columnModifier = Modifier.padding(vertical = 8.dp)
+            Column {
+                Row(modifier = columnModifier) {
+                    Text(text = "Id: ")
+                    Text(text = pokemonDetail.id.toString())
+                }
+                Divider()
+                Row(modifier = columnModifier) {
+                    Text(text = "Name: ")
+                    Text(text = pokemonDetail.name)
+                }
+                Divider()
+                Row(modifier = columnModifier) {
+                    Text(text = "Weight: ")
+                    Text(text = pokemonDetail.weight.toString())
+                }
+                Divider()
+                Row(modifier = columnModifier) {
+                    Text(text = "Height: ")
+                    Text(text = pokemonDetail.height.toString())
+                }
+                Divider()
             }
         }
     }
