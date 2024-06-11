@@ -79,4 +79,8 @@ dependencies {
     testImplementation("io.insert-koin:koin-android-test")
     //coil
     implementation("io.coil-kt:coil-compose:2.4.0")
+
+    // Mockk
+    testImplementation("io.mockk:mockk:1.12.1")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0-RC")
 }

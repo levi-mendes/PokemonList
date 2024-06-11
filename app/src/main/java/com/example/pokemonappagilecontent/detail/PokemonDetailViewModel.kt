@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.core.detail.GetPokemonDetailLocalUseCase
 import com.example.core.detail.GetPokemonDetailUseCase
 import com.example.core.detail.SavePokemonDetailsLocalUseCase
+import com.example.pokemonappagilecontent.InternetConnectionError
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -38,9 +39,9 @@ class PokemonDetailViewModel(
                     it.copy(loading = false, pokemonDetail = pokemonDetail)
                 }
 
-            }.onFailure {error ->
+            }.onFailure { error ->
                 _uiState.update {
-                    it.copy(loading = false, error = error)
+                    it.copy(loading = false, error = InternetConnectionError())
                 }
             }
         }

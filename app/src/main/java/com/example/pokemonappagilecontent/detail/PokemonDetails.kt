@@ -25,9 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.CachePolicy
-import coil.request.ErrorResult
 import coil.request.ImageRequest
-import coil.request.SuccessResult
 import com.example.core.detail.PokemonDetailEntity
 import com.example.pokemonappagilecontent.ui.theme.PokemonAppAgileContentTheme
 import org.koin.androidx.compose.koinViewModel
@@ -74,29 +72,14 @@ fun PokemonDetail(
             )
         }
 
-        // Build an ImageRequest with Coil
-        val listener = object : ImageRequest.Listener {
-            override fun onError(request: ImageRequest, result: ErrorResult) {
-                super.onError(request, result)
-            }
-
-            override fun onSuccess(request: ImageRequest, result: SuccessResult) {
-                super.onSuccess(request, result)
-            }
-        }
-
         state.pokemonDetail?.let { pokemonDetail ->
             val imageUrl = pokemonDetail.imageUrl
 
             val imageRequest = ImageRequest.Builder(LocalContext.current)
                 .data(imageUrl)
-                .listener(listener)
-//                .dispatcher(Dispatcher.IO)
                 .memoryCacheKey(imageUrl)
                 .diskCacheKey(imageUrl)
-//                .placeholder(placeholder)
-//                .error(placeholder)
-//                .fallback(placeholder)
+                .error(drawableResId = android.R.drawable.stat_notify_error)
                 .diskCachePolicy(CachePolicy.ENABLED)
                 .memoryCachePolicy(CachePolicy.ENABLED)
                 .build()
@@ -108,7 +91,6 @@ fun PokemonDetail(
                 Modifier
                     .width(200.dp)
                     .height(200.dp),
-                //placeholder = painterResource(id = R.drawable.placeholder),
                 contentScale = ContentScale.Crop
             )
 

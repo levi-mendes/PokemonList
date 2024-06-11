@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.core.list.ListPokemonPageLocalUseCase
 import com.example.core.list.ListPokemonPageUseCase
 import com.example.core.list.SavePokemonPageLocalUseCase
+import com.example.pokemonappagilecontent.InternetConnectionError
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -20,7 +21,7 @@ class ListPokemonsViewModel(
     private val _uiState = MutableStateFlow(ListPokemonsUiState(loading = true))
     val uiState: StateFlow<ListPokemonsUiState> = _uiState.asStateFlow()
 
-    private var nextPage: Int = 0
+    var nextPage: Int = 0
 
     init {
         loadNextPokemonPage()
@@ -61,9 +62,9 @@ class ListPokemonsViewModel(
                     )
                 }
 
-            }.onFailure {error ->
+            }.onFailure { error ->
                 _uiState.update {
-                    it.copy(loading = false, error = error)
+                    it.copy(loading = false, error = InternetConnectionError())
                 }
             }
         }
