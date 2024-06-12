@@ -6,7 +6,7 @@ import com.example.core.list.PokemonItemEntity
 
 object PokemonAppDestinations {
     const val LIST = "list"
-    const val DETAILS = "details"
+    const val DETAILS = "details/{name}"
 }
 
 class PokemonAppNavigationActions(navController: NavHostController) {

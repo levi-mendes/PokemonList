@@ -19,10 +19,11 @@ fun PokemonAppNavGraph(
     ) {
         composable(PokemonAppDestinations.LIST) {
             ListPokemons(onItemClick = { name ->
-                navController.navigate("${PokemonAppDestinations.DETAILS}/$name")
+                val route = PokemonAppDestinations.DETAILS.replaceAfter('/', name)
+                navController.navigate(route)
             })
         }
-        composable("${PokemonAppDestinations.DETAILS}/{name}") { entry ->
+        composable(PokemonAppDestinations.DETAILS) { entry ->
             entry.arguments?.getString("name")?.let {
                 PokemonDetail(name = it)
             } ?: navController.popBackStack()
