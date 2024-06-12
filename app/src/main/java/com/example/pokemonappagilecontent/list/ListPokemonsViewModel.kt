@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.core.list.ListPokemonPageLocalUseCase
 import com.example.core.list.ListPokemonPageUseCase
 import com.example.core.list.SavePokemonPageLocalUseCase
-import com.example.pokemonappagilecontent.InternetConnectionError
+import com.example.pokemonappagilecontent.exception.InternetConnectionException
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -64,7 +64,7 @@ class ListPokemonsViewModel(
 
             }.onFailure { error ->
                 _uiState.update {
-                    it.copy(loading = false, error = InternetConnectionError())
+                    it.copy(loading = false, error = InternetConnectionException())
                 }
             }
         }

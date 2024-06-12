@@ -1,5 +1,5 @@
-package com.example.pokemonappagilecontent
+package com.example.pokemonappagilecontent.exception
 
-class InternetConnectionError(
+class InternetConnectionException(
     errorMsg: String = "Please, check your internet connection and try again !!!"
 ): Throwable(errorMsg)
