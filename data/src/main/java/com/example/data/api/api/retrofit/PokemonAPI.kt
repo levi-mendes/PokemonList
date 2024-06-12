@@ -1,7 +1,7 @@
-package com.example.data.api.retrofit
+package com.example.data.api.api.retrofit
 
-import com.example.data.api.response.ListPokemonsPageResponse
-import com.example.data.api.response.PokemonDetailResponse
+import com.example.data.api.api.response.ListPokemonsPageResponse
+import com.example.data.api.api.response.PokemonDetailResponse
 import retrofit2.Retrofit
 
 class PokemonAPI(retrofit: Retrofit) {

@@ -4,8 +4,8 @@ import com.example.core.detail.PokemonDetailEntity
 import com.example.core.list.PokemonItemEntity
 import com.example.data.api.database.entity.PokemonDB
 import com.example.data.api.database.entity.PokemonDetailsDB
-import com.example.data.api.response.PokemonDetailResponse
-import com.example.data.api.response.PokemonItemListResponse
+import com.example.data.api.api.response.PokemonDetailResponse
+import com.example.data.api.api.response.PokemonItemListResponse
 
 fun PokemonItemListResponse.toPokemonEntity(): PokemonItemEntity {
     return PokemonItemEntity().apply {

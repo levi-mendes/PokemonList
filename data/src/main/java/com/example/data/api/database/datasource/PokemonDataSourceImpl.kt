@@ -1,9 +1,9 @@
-package com.example.data.api.datasource
+package com.example.data.api.database.datasource
 
 import com.example.core.datasource.remote.PokemonDataSource
 import com.example.core.detail.PokemonDetailEntity
 import com.example.core.list.PokemonItemEntity
-import com.example.data.api.retrofit.PokemonAPI
+import com.example.data.api.api.retrofit.PokemonAPI
 import com.example.data.api.mapper.toPokemonDetail
 import com.example.data.api.mapper.toPokemonEntity
 

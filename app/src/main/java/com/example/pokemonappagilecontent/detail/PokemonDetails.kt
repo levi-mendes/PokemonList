@@ -21,12 +21,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.CachePolicy
 import coil.request.ImageRequest
+import com.example.pokemonappagilecontent.R
 import com.example.pokemonappagilecontent.ui.theme.PokemonAppAgileContentTheme
 import org.koin.androidx.compose.koinViewModel
 
@@ -95,32 +97,45 @@ fun PokemonDetail(
                     .height(200.dp),
                 contentScale = ContentScale.Crop
             )
-
             val columnModifier = Modifier.padding(vertical = 8.dp)
+
             Column {
-                Row(modifier = columnModifier) {
-                    Text(text = "Id: ")
-                    Text(text = pokemonDetail.id.toString())
-                }
-                Divider()
-                Row(modifier = columnModifier) {
-                    Text(text = "Name: ")
-                    Text(text = pokemonDetail.name.replaceFirstChar { it.uppercase() })
-                }
-                Divider()
-                Row(modifier = columnModifier) {
-                    Text(text = "Weight: ")
-                    Text(text = pokemonDetail.weight.toString())
-                }
-                Divider()
-                Row(modifier = columnModifier) {
-                    Text(text = "Height: ")
-                    Text(text = pokemonDetail.height.toString())
-                }
-                Divider()
+                RowPokemonAtributte(
+                    modifier = columnModifier,
+                    label = stringResource(R.string.text_label_id),
+                    value = pokemonDetail.id.toString()
+                )
+                RowPokemonAtributte(
+                    modifier = columnModifier,
+                    label = stringResource(R.string.text_laabel_name),
+                    value = pokemonDetail.name.replaceFirstChar { it.uppercase() }
+                )
+                RowPokemonAtributte(
+                    modifier = columnModifier,
+                    label = stringResource(R.string.text_labe_weight),
+                    value = pokemonDetail.weight.toString()
+                )
+                RowPokemonAtributte(
+                    modifier = columnModifier,
+                    label = stringResource(R.string.text_label_height),
+                    value = pokemonDetail.height.toString()
+                )
             }
         }
     }
+}
+
+@Composable
+fun RowPokemonAtributte(
+    modifier: Modifier = Modifier,
+    label: String,
+    value: String
+) {
+    Row(modifier = modifier) {
+        Text(text = label)
+        Text(text = value)
+    }
+    Divider()
 }
 
 @Preview(showBackground = true)

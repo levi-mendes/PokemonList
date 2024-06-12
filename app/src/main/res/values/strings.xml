@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">PokemonAppAgileContent</string>
     <string name="text_loading">Carregango.. Por favor aguarde..</string>
+    <string name="text_laabel_name">"Name: "</string>
+    <string name="text_label_id">"Id: "</string>
+    <string name="text_labe_weight">"Weight: "</string>
+    <string name="text_label_height">"Height: "</string>
 </resources>
