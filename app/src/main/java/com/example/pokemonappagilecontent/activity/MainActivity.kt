@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold (
                     topBar = {
                         TopAppBar(title = {
-                            Text(text = getString(R.string.topbar_title_pokemons)) 
+                            Text(text = getString(R.string.topbar_title_pokemons))
                         })
                     }
                 ) { innerPadding ->

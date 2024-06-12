@@ -19,7 +19,7 @@ fun PokemonDetailResponse.toPokemonDetail(): PokemonDetailEntity {
         name = name,
         weight = weight,
         height = height,
-        imageUrl = sprites.url
+        imageUrl = sprites.other.home.frontDefault
     )
 }
 
