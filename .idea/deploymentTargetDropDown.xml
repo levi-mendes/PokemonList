@@ -2,9 +2,6 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="ListPokemonsTest">
-        <State />
-      </entry>
       <entry key="app">
         <State>
           <targetSelectedWithDropDown>
@@ -22,6 +19,9 @@
         </State>
       </entry>
       <entry key="shouldCallDetailScrennAfterItemClick()">
+        <State />
+      </entry>
+      <entry key="shouldHasTitlePokemons()">
         <State />
       </entry>
       <entry key="shouldShowInternetErrorMessageWhenNotConnected()">
