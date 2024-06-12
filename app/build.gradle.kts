@@ -82,7 +82,6 @@ dependencies {
 
     // Mockk
     testImplementation("io.mockk:mockk:1.12.4")
-//    androidTestImplementation("io.mockk:mockk-agent:1.12.1")
     androidTestImplementation("io.mockk:mockk-android:1.12.4")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0-RC")
 }

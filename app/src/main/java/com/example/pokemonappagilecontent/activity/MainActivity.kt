@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
+import com.example.pokemonappagilecontent.R
 import com.example.pokemonappagilecontent.navigation.PokemonAppNavGraph
 import com.example.pokemonappagilecontent.ui.theme.PokemonAppAgileContentTheme
 
@@ -25,7 +26,9 @@ class MainActivity : ComponentActivity() {
             PokemonAppAgileContentTheme {
                 Scaffold (
                     topBar = {
-                        TopAppBar(title = { Text(text = "Pokemons") })
+                        TopAppBar(title = {
+                            Text(text = getString(R.string.topbar_title_pokemons)) 
+                        })
                     }
                 ) { innerPadding ->
                     Column(

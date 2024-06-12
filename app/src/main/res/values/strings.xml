@@ -5,4 +5,5 @@
     <string name="text_label_id">Id: </string>
     <string name="text_labe_weight">Weight: </string>
     <string name="text_label_height">Height: </string>
+    <string name="topbar_title_pokemons">Pokemons</string>
 </resources>
