@@ -27,7 +27,7 @@ fun ItemPokemonList(
 
     ) {
         Text(
-            text = pokemon.name,
+            text = pokemon.name.replaceFirstChar { it.uppercase() },
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 24.dp)
         )
         Divider()

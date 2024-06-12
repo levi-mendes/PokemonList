@@ -6,6 +6,9 @@ import androidx.room.PrimaryKey
 @Entity
 data class PokemonDetailsDB(
     @PrimaryKey
-    var name: String,
-    var url: String
+    val id: Int,
+    val name: String,
+    val url: String,
+    val weight: Double,
+    val height: Double
 )

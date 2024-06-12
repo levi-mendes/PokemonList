@@ -13,5 +13,5 @@ interface PokemonDetailsDao {
     fun getDetails(name: String): PokemonDetailsDB?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun save(pokemon: PokemonDetailsDB)
+    fun save(pokemon: PokemonDetailsDB): Long
 }

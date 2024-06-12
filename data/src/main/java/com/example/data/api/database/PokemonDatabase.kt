@@ -9,7 +9,7 @@ import com.example.data.api.database.dao.PokemonDetailsDao
 import com.example.data.api.database.entity.PokemonDB
 import com.example.data.api.database.entity.PokemonDetailsDB
 
-@Database(entities = [PokemonDB::class, PokemonDetailsDB::class], version = 4)
+@Database(entities = [PokemonDB::class, PokemonDetailsDB::class], version = 3)
 abstract class PokemonDatabase: RoomDatabase() {
 
     abstract fun pokemonDao(): PokemonDao

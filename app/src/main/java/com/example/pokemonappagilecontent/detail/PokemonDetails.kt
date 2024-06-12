@@ -27,7 +27,6 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.CachePolicy
 import coil.request.ImageRequest
-import com.example.core.detail.PokemonDetailEntity
 import com.example.pokemonappagilecontent.ui.theme.PokemonAppAgileContentTheme
 import org.koin.androidx.compose.koinViewModel
 
@@ -106,7 +105,7 @@ fun PokemonDetail(
                 Divider()
                 Row(modifier = columnModifier) {
                     Text(text = "Name: ")
-                    Text(text = pokemonDetail.name)
+                    Text(text = pokemonDetail.name.replaceFirstChar { it.uppercase() })
                 }
                 Divider()
                 Row(modifier = columnModifier) {
@@ -127,9 +126,7 @@ fun PokemonDetail(
 @Preview(showBackground = true)
 @Composable
 fun PokemonDetailPreview() {
-    val pokemonDetail = PokemonDetailEntity()
     val state = PokemonDetailUiState(loading = true)
-    state.pokemonDetail = pokemonDetail
 
     PokemonAppAgileContentTheme {
         Surface {

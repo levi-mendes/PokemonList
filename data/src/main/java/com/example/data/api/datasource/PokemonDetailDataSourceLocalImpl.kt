@@ -10,8 +10,7 @@ import kotlinx.coroutines.withContext
 class PokemonDetailDataSourceLocalImpl(private val dao: PokemonDetailsDao): PokemonDetailsDataSourceLocal {
     override suspend fun getByName(name: String): PokemonDetailEntity? {
         return withContext(Dispatchers.IO) {
-            val detail = dao.getDetails(name)
-            detail?.toPokemonDetailDB()
+            dao.getDetails(name)?.toPokemonDetailDB()
         }
     }
 

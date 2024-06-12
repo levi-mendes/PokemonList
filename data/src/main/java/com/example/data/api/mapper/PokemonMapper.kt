@@ -14,35 +14,38 @@ fun PokemonItemListResponse.toPokemonEntity(): PokemonItemEntity {
 }
 
 fun PokemonDetailResponse.toPokemonDetail(): PokemonDetailEntity {
-    return PokemonDetailEntity().apply {
-        id = this@toPokemonDetail.id
-        name = this@toPokemonDetail.name
-        weight = this@toPokemonDetail.weight
-        height = this@toPokemonDetail.height
-        imageUrl = this@toPokemonDetail.sprites.url
-    }
+    return PokemonDetailEntity(
+        id = id,
+        name = name,
+        weight = weight,
+        height = height,
+        imageUrl = sprites.url
+    )
 }
 
 fun PokemonDetailEntity.toPokemonDetailDB(): PokemonDetailsDB {
-    return PokemonDetailsDB(name = name, url = imageUrl)
+    return PokemonDetailsDB(
+        id = id,
+        name = name,
+        url = imageUrl,
+        weight = weight,
+        height = height
+    )
 }
 
 fun PokemonDetailsDB.toPokemonDetailDB(): PokemonDetailEntity {
-    return PokemonDetailEntity().apply {
-        name = this@toPokemonDetailDB.name
-        imageUrl = this@toPokemonDetailDB.url
-    }
+    return PokemonDetailEntity(
+        id = id,
+        name = name,
+        imageUrl = url,
+        weight = weight,
+        height = height
+    )
 }
 
 fun PokemonDB.toPokemonItemEntity(): PokemonItemEntity {
     return PokemonItemEntity().apply {
         name = this@toPokemonItemEntity.name
-    }
-}
-
-fun PokemonDB.toPokemonDetailEntity(): PokemonDetailEntity {
-    return PokemonDetailEntity().apply {
-        name = this@toPokemonDetailEntity.name
     }
 }
 
