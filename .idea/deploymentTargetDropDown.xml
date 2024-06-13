@@ -18,18 +18,6 @@
           <timeTargetWasSelectedWithDropDown value="2024-06-06T13:01:30.019577Z" />
         </State>
       </entry>
-      <entry key="shouldCallDetailScrennAfterItemClick()">
-        <State />
-      </entry>
-      <entry key="shouldHasTitlePokemons()">
-        <State />
-      </entry>
-      <entry key="shouldShowInternetErrorMessageWhenNotConnected()">
-        <State />
-      </entry>
-      <entry key="should_List_Show_150_items()">
-        <State />
-      </entry>
     </value>
   </component>
 </project>

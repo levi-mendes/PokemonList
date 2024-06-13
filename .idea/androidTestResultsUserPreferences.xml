@@ -36,6 +36,7 @@
                 <map>
                   <entry key="Duration" value="90" />
                   <entry key="Tests" value="360" />
+                  <entry key="samsung SM-G991B" value="120" />
                   <entry key="samsung SM-X205" value="120" />
                 </map>
               </option>
