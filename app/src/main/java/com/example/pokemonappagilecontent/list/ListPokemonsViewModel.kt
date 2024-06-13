@@ -23,10 +23,6 @@ class ListPokemonsViewModel(
 
     var nextPage: Int = 0
 
-    init {
-        loadNextPokemonPage()
-    }
-
     fun loadNextPokemonPage() {
         _uiState.update {
             it.copy(loading = true)

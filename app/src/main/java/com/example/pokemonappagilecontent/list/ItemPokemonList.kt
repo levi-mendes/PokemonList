@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.core.list.PokemonItemEntity
+import com.example.pokemonappagilecontent.fakedata.listPokemonItemEntityFake
 import com.example.pokemonappagilecontent.ui.theme.PokemonAppAgileContentTheme
 
 @Composable
@@ -37,10 +38,10 @@ fun ItemPokemonList(
 @Preview(showBackground = true)
 @Composable
 fun ItemPokemonListPreview() {
-    val pokemon = PokemonItemEntity()
-    pokemon.name = "Pikatchu"
-
     PokemonAppAgileContentTheme {
-        ItemPokemonList(pokemon = pokemon, onItemClicked = {})
+        ItemPokemonList(
+            pokemon = listPokemonItemEntityFake.first(),
+            onItemClicked = {}
+        )
     }
 }

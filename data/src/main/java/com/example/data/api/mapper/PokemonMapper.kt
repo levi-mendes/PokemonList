@@ -8,9 +8,7 @@ import com.example.data.api.api.response.PokemonDetailResponse
 import com.example.data.api.api.response.PokemonItemListResponse
 
 fun PokemonItemListResponse.toPokemonEntity(): PokemonItemEntity {
-    return PokemonItemEntity().apply {
-        name = this@toPokemonEntity.name
-    }
+    return PokemonItemEntity(name = name)
 }
 
 fun PokemonDetailResponse.toPokemonDetail(): PokemonDetailEntity {
@@ -44,9 +42,7 @@ fun PokemonDetailsDB.toPokemonDetailDB(): PokemonDetailEntity {
 }
 
 fun PokemonDB.toPokemonItemEntity(): PokemonItemEntity {
-    return PokemonItemEntity().apply {
-        name = this@toPokemonItemEntity.name
-    }
+    return PokemonItemEntity(name = name)
 }
 
 fun PokemonItemEntity.toPokemonItemEntity(page: Int) =
