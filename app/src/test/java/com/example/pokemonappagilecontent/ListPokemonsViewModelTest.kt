@@ -79,4 +79,11 @@ class ListPokemonsViewModelTest {
             savePokemonPageLocal.savePage(any(), any())
         }
     }
+
+    @Test
+    fun `after 2 loadNextPokemonPage method call, viewModel-uiState-value-pokemons should contains 300 itens`() {
+        viewModel.loadNextPokemonPage()
+        viewModel.loadNextPokemonPage()
+        assertEquals(300, viewModel.uiState.value.pokemons?.size)
+    }
 }

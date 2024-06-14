@@ -37,8 +37,11 @@ fun ListPokemons(
         viewModel = viewModel
     )
 
-    LaunchedEffect(Unit) {
-        viewModel.loadNextPokemonPage()
+    //logic to avoid double call
+    if (state.pokemons.size == 0) {
+        LaunchedEffect(Unit) {
+            viewModel.loadNextPokemonPage()
+        }
     }
 }
 

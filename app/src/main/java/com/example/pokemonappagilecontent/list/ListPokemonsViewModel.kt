@@ -29,13 +29,11 @@ class ListPokemonsViewModel(
         }
 
         viewModelScope.launch {
-            val initialIndex = if (_uiState.value.currentItensCount > 0) _uiState.value.currentItensCount + 1 else 0
-
             runCatching {
                 var pokemons = getPokemonPageLocal.listPokemonPage(nextPage)
 
                 if (pokemons.isEmpty()) {
-                    pokemons = getPokemonPage.listPokemonPage(initialIndex)
+                    pokemons = getPokemonPage.listPokemonPage(initialIndex())
                     savePokemonPageLocal.savePage(nextPage, pokemons)
                 }
 
@@ -43,18 +41,15 @@ class ListPokemonsViewModel(
                 pokemons
 
             }.onSuccess { pokemons ->
-                val updatedIndex = initialIndex + pokemons.lastIndex
-                val updatedList = uiState.value.pokemons
-                updatedList?.addAll(pokemons)
-                updatedList?.sortBy { it.name }
+                uiState.value.pokemons.addAll(pokemons)
+                val sortedList = uiState.value.pokemons.sortedBy { it.name}.toMutableList()
 
                 _uiState.update {
                     it.copy(
                         loading = false,
                         isNewResultSearch = true,
-                        pokemons = updatedList,
-                        error = null,
-                        currentItensCount = updatedIndex
+                        pokemons =  sortedList,
+                        error = null
                     )
                 }
 
@@ -64,5 +59,12 @@ class ListPokemonsViewModel(
                 }
             }
         }
+    }
+
+    fun initialIndex(): Int {
+        return if (_uiState.value.pokemons.size > 0)
+            _uiState.value.pokemons.size + 1
+        else
+            0
     }
 }
