@@ -26,6 +26,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.pokemonappagilecontent.components.LoadingDialog
+import com.example.pokemonappagilecontent.fakedata.listPokemonItemEntityFake
 import com.example.pokemonappagilecontent.ui.theme.PokemonAppAgileContentTheme
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
@@ -87,7 +88,7 @@ fun ListPokemons(
                 )
             }
 
-            if (state.searchHasFinished()) {
+            if (!state.loading) {
                 LaunchedEffect(Unit) {
                     scope.launch {
                         snackbarHostState.showSnackbar(state.pokemons.size.toString())
@@ -105,7 +106,8 @@ fun ListPokemons(
                                         onNavigateToDetails(item.name)
                                     },
                                 onItemClicked = onNavigateToDetails,
-                                pokemon = item
+                                pokemon = item,
+                                index = index
                             )
 
                             if (index == state.pokemons.lastIndex) {
@@ -119,11 +121,15 @@ fun ListPokemons(
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
-fun ListPokemonsPreview() {
-    val viewModel: ListPokemonsViewModel = koinViewModel()
-    val state by viewModel.uiState.collectAsState()
+fun ListPokemonsPreview(
+    viewModel: ListPokemonsViewModel = koinViewModel(),
+    state: ListPokemonsUiState = ListPokemonsUiState()
+) {
+    //TODO
+    state.pokemons = listPokemonItemEntityFake.toMutableList()
+    state.loading = true
 
     PokemonAppAgileContentTheme {
         ListPokemons(

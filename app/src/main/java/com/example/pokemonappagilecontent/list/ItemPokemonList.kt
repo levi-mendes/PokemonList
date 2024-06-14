@@ -18,7 +18,8 @@ import com.example.pokemonappagilecontent.ui.theme.PokemonAppAgileContentTheme
 fun ItemPokemonList(
     modifier: Modifier = Modifier,
     onItemClicked: (String) -> Unit,
-    pokemon: PokemonItemEntity
+    pokemon: PokemonItemEntity,
+    index: Int = 0
 ) {
     Column(
         modifier.fillMaxWidth()
@@ -28,7 +29,7 @@ fun ItemPokemonList(
 
     ) {
         Text(
-            text = pokemon.name.replaceFirstChar { it.uppercase() },
+            text = "$index:::${pokemon.name.replaceFirstChar { it.uppercase() }}",
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 24.dp)
         )
         Divider()

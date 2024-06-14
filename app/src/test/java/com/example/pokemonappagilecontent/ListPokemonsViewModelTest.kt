@@ -61,7 +61,7 @@ class ListPokemonsViewModelTest {
     @Test
     fun `pokemons uiState should contain at least 150 itens`() {
         viewModel.loadNextPokemonPage()
-        assertEquals(150, viewModel.uiState.value.pokemons?.size)
+        assertEquals(150, viewModel.uiState.value.pokemons.size)
     }
 
     @Test
@@ -84,6 +84,6 @@ class ListPokemonsViewModelTest {
     fun `after 2 loadNextPokemonPage method call, viewModel-uiState-value-pokemons should contains 300 itens`() {
         viewModel.loadNextPokemonPage()
         viewModel.loadNextPokemonPage()
-        assertEquals(300, viewModel.uiState.value.pokemons?.size)
+        assertEquals(300, viewModel.uiState.value.pokemons.size)
     }
 }

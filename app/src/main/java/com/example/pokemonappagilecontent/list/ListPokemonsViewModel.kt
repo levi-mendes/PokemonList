@@ -24,16 +24,15 @@ class ListPokemonsViewModel(
     var nextPage: Int = 0
 
     fun loadNextPokemonPage() {
-        _uiState.update {
-            it.copy(loading = true)
-        }
+        _uiState.update { it.copy(loading = true) }
 
         viewModelScope.launch {
             runCatching {
                 var pokemons = getPokemonPageLocal.listPokemonPage(nextPage)
 
                 if (pokemons.isEmpty()) {
-                    pokemons = getPokemonPage.listPokemonPage(initialIndex())
+                    val initialIndex = _uiState.value.pokemons.size
+                    pokemons = getPokemonPage.listPokemonPage(initialIndex)
                     savePokemonPageLocal.savePage(nextPage, pokemons)
                 }
 
@@ -45,12 +44,7 @@ class ListPokemonsViewModel(
                 val sortedList = uiState.value.pokemons.sortedBy { it.name}.toMutableList()
 
                 _uiState.update {
-                    it.copy(
-                        loading = false,
-                        isNewResultSearch = true,
-                        pokemons =  sortedList,
-                        error = null
-                    )
+                    it.copy(loading = false, pokemons =  sortedList, error = null)
                 }
 
             }.onFailure { error ->
@@ -59,12 +53,5 @@ class ListPokemonsViewModel(
                 }
             }
         }
-    }
-
-    fun initialIndex(): Int {
-        return if (_uiState.value.pokemons.size > 0)
-            _uiState.value.pokemons.size + 1
-        else
-            0
     }
 }
