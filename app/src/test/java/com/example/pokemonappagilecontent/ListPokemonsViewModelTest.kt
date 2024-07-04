@@ -18,19 +18,19 @@ class ListPokemonsViewModelTest {
     @get:Rule
     val mainDispatcherRule = MainDispatcherRule()
 
-    private val getPokemonPageRemote: ListPokemonPageUseCase = mockk {
+    private val getPokemonPageRemote = mockk<ListPokemonPageUseCase> {
         coEvery { listPokemonPage(any()) } returns listPokemonItemEntityFake
     }
 
-    private val getPokemonPageLocal: ListPokemonPageLocalUseCase = mockk {
+    private val getPokemonPageLocal = mockk<ListPokemonPageLocalUseCase> {
         coEvery { listPokemonPage(any()) } returns listPokemonItemEntityFake
     }
 
-    private val getPokemonPageLocalEmpty: ListPokemonPageLocalUseCase = mockk {
+    private val getPokemonPageLocalEmpty = mockk<ListPokemonPageLocalUseCase> {
         coEvery { listPokemonPage(any()) } returns emptyList()
     }
 
-    private val savePokemonPageLocal: SavePokemonPageLocalUseCase = mockk {
+    private val savePokemonPageLocal = mockk<SavePokemonPageLocalUseCase> {
         coEvery { savePage(any(), any()) } returns mockk()
     }
 
