@@ -29,13 +29,13 @@ import coil.compose.AsyncImage
 import coil.request.CachePolicy
 import coil.request.ImageRequest
 import com.example.pokemonappagilecontent.R
+import com.example.pokemonappagilecontent.fakedata.pikachuDetail
 import com.example.pokemonappagilecontent.ui.theme.PokemonAppAgileContentTheme
-import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun PokemonDetail(
     name: String,
-    viewModel: PokemonDetailViewModel = koinViewModel(),
+    viewModel: PokemonDetailViewModel,
 ) {
     val state by viewModel.uiState.collectAsState()
 
@@ -141,7 +141,10 @@ fun RowPokemonAtributte(
 @Preview(showBackground = true)
 @Composable
 fun PokemonDetailPreview() {
-    val state = PokemonDetailUiState(loading = true)
+    val state = PokemonDetailUiState(
+        pokemonDetail = pikachuDetail,
+        loading = false
+    )
 
     PokemonAppAgileContentTheme {
         Surface {

@@ -1,6 +1,15 @@
 package com.example.pokemonappagilecontent.fakedata
 
+import com.example.core.detail.PokemonDetailEntity
 import com.example.core.list.PokemonItemEntity
+
+val pikachuDetail = PokemonDetailEntity(
+    id = 25,
+    name = "Pikatchu",
+    imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/25.png",
+    weight = 60.0,
+    height = 4.0
+)
 
 val listPokemonItemEntityFake = listOf(
     PokemonItemEntity(name = "bulbasaur"),

@@ -29,11 +29,10 @@ import com.example.pokemonappagilecontent.components.LoadingDialog
 import com.example.pokemonappagilecontent.fakedata.listPokemonItemEntityFake
 import com.example.pokemonappagilecontent.ui.theme.PokemonAppAgileContentTheme
 import kotlinx.coroutines.launch
-import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ListPokemons(
-    viewModel: ListPokemonsViewModel = koinViewModel(),
+    viewModel: ListPokemonsViewModel,
     onItemClick: (String) -> Unit
 ) {
     val state by viewModel.uiState.collectAsState()
@@ -41,7 +40,9 @@ fun ListPokemons(
     ListPokemons(
         state = state,
         onNavigateToDetails = onItemClick,
-        viewModel = viewModel
+        onLastItemAchieved = {
+            viewModel.loadNextPokemonPage()
+        }
     )
 
     //logic to avoid double call
@@ -56,7 +57,7 @@ fun ListPokemons(
 fun ListPokemons(
     state: ListPokemonsUiState = ListPokemonsUiState(),
     onNavigateToDetails: (String) -> Unit = {},
-    viewModel: ListPokemonsViewModel
+    onLastItemAchieved: () -> Unit = {},
 ) {
 
     val snackbarHostState = remember { SnackbarHostState() }
@@ -111,7 +112,7 @@ fun ListPokemons(
                             )
 
                             if (index == state.pokemons.lastIndex) {
-                                viewModel.loadNextPokemonPage()
+                                onLastItemAchieved()
                             }
                         }
                     }
@@ -123,19 +124,13 @@ fun ListPokemons(
 
 @Preview(showBackground = true)
 @Composable
-fun ListPokemonsPreview(
-    viewModel: ListPokemonsViewModel = koinViewModel(),
-    state: ListPokemonsUiState = ListPokemonsUiState()
-) {
-    //TODO
-    state.pokemons = listPokemonItemEntityFake.toMutableList()
-    state.loading = true
+fun ListPokemonsPreview() {
+    val state = ListPokemonsUiState(
+        loading = false,
+        pokemons = listPokemonItemEntityFake.toMutableList()
+    )
 
     PokemonAppAgileContentTheme {
-        ListPokemons(
-            state = state,
-            onNavigateToDetails = { },
-            viewModel = viewModel
-        )
+        ListPokemons(state = state)
     }
 }
